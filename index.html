@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>孵化惊喜蛋</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Nunito:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="card" id="app-card" aria-labelledby="app-title">
+        <button class="sound-toggle" id="sound-button" aria-label="声音开关">声音开</button>
+
+        <header class="hero">
+          <p class="eyebrow">专注时间</p>
+          <h1 id="app-title">选一个小任务，开始专注</h1>
+          <p class="hero-tip">完成后打开惊喜蛋</p>
+        </header>
+
+        <section class="setup-panel" id="setup-panel">
+          <div class="setup-block">
+            <p class="setup-label">选择时间</p>
+            <div class="choice-row" aria-label="选择时间">
+              <button class="choice-button is-selected" data-minutes="3">3分钟</button>
+              <button class="choice-button" data-minutes="5">5分钟</button>
+              <button class="choice-button" data-minutes="8">8分钟</button>
+              <button class="choice-button" data-minutes="10">10分钟</button>
+              <button class="choice-button" data-minutes="custom">自定义</button>
+            </div>
+            <div class="custom-input-row" id="custom-time-row" hidden>
+              <input class="custom-input" id="custom-time-input" type="number" min="1" max="120" placeholder="输入分钟" />
+              <button class="mini-button" id="custom-time-apply">确定</button>
+            </div>
+          </div>
+
+          <div class="setup-block">
+            <p class="setup-label">选择小任务</p>
+            <div class="choice-row mission-row" id="mission-buttons" aria-label="选择小任务"></div>
+            <div class="custom-input-row" id="custom-mission-row" hidden>
+              <input class="custom-input custom-input-wide" id="custom-mission-input" type="text" maxlength="20" placeholder="输入小任务" />
+              <button class="mini-button" id="custom-mission-apply">确定</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="focus-panel" aria-live="polite">
+          <p class="timer" id="timer">03:00</p>
+
+          <div class="egg-stage">
+            <div class="egg-glow-ring" id="egg-glow-ring"></div>
+            <div class="egg-shell" id="egg-shell" data-crack="0" aria-label="惊喜蛋">
+              <div class="egg-top"></div>
+              <div class="egg-bottom"></div>
+              <div class="egg-shine"></div>
+              <div class="egg-crack egg-crack-small"></div>
+              <div class="egg-crack egg-crack-big"></div>
+            </div>
+
+            <div class="reward-card" id="reward-card" hidden>
+              <p class="reward-badge">你获得了新奖励</p>
+              <div class="reward-icon-wrap">
+                <div class="reward-icon" id="reward-icon" aria-hidden="true"></div>
+              </div>
+              <p class="reward-name" id="reward-name"></p>
+              <button class="primary-button reward-button" id="again-button">再来一次</button>
+            </div>
+
+            <div class="confirm-panel" id="confirm-panel" hidden>
+              <p class="confirm-text">现在结束的话，这次<strong>不能</strong>打开惊喜蛋。确定要结束吗？</p>
+              <div class="confirm-actions">
+                <button class="secondary-button" id="continue-button">继续孵化</button>
+                <button class="quiet-button" id="confirm-exit-button">确定结束</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-panel">
+            <div
+              class="progress-track"
+              id="progress-track"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="message" id="encouragement">孵化任务</p>
+          </div>
+        </section>
+
+        <div class="controls" id="controls">
+          <button class="primary-button" id="start-button">开始</button>
+          <button class="secondary-button" id="reset-button">重置</button>
+          <button class="quiet-button" id="exit-button" hidden>提前结束</button>
+        </div>
+
+        <details class="collection-panel" id="collection-panel">
+          <summary class="collection-toggle">查看奖励</summary>
+          <section class="collection" aria-labelledby="collection-title" id="collection">
+            <div class="collection-header">
+              <h2 id="collection-title">奖励盒</h2>
+              <p>已收集的小奖励</p>
+            </div>
+            <div class="collection-grid" id="collection-grid"></div>
+          </section>
+        </details>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
